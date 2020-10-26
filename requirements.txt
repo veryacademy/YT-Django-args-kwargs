@@ -1,0 +1,12 @@
+asgiref==3.2.10
+autopep8==1.5.3
+Django==3.0.8
+django-js-asset==1.2.2
+django-mptt==0.11.0
+django-six==1.0.4
+Pillow==8.0.0
+pycodestyle==2.6.0
+pytz==2020.1
+six==1.15.0
+sqlparse==0.3.1
+toml==0.10.1

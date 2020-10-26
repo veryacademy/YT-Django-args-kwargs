@@ -1,0 +1,50 @@
+<style>
+    .avatar {
+        height: 30px;
+        width: 30px;
+        background-color: #000;
+        border-radius: 50%;
+        display: inline-block;
+
+    }
+</style>
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal"><a class="text-dark" href="/">Demo</a></h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="#">Features</a>
+        <a class="p-2 text-dark" href="#">Enterprise</a>
+        <a class="p-2 text-dark" href="#">Support</a>
+    </nav>
+    {% if request.user.is_authenticated %}
+
+
+    <img class="avatar" src="
+    {% for data in avatar %}
+    {{ data.avatar.url }}
+    {% endfor %}
+    ">
+
+
+    <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url "accounts:profile" %}">Dashboard</a>
+                <a class="dropdown-item" href="{% url "accounts:edit" %}">Edit details</a>
+                <a class="dropdown-item" href="{% url "accounts:favourite_list" %}">Saved Posts</a>
+                <a class="dropdown-item" href="{% url "password_change" %}">Change Password</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url "logout" %}">Logout</a>
+            </div>
+        </li>
+    </ul>
+    {% else %}
+    <nav>
+        <a class="p-2 text-dark" href="{% url "accounts:register" %}">Register</a>
+        <a class="p-2 text-dark" href="{% url "login" %}">Login</a>
+    </nav>
+    {% endif %}
+</div>

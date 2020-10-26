@@ -1,0 +1,126 @@
+1
+==========
+def add_numbers(a,b,c):
+    sum = a + b + c
+    print(sum)
+
+def home(request):
+
+    add_numbers(1,2,3)
+
+2
+==========
+
+def add_numbers(a,b,c):
+    print(a,b,c)
+
+def home(request):
+
+    add_numbers('asd',2,3)
+
+3
+==========
+efficiant way - based upon the fact we are not sure how many parameter we are going to need
+
+def add_numbers():
+    l = [1,2,3]
+    return l
+
+
+def home(request):
+
+    l = add_numbers()
+    print(*l)
+
+4
+==========
+def add_numbers(a,b,c):
+    
+    print (a,b,c)
+
+
+def home(request):
+
+    l = [1,2,3]
+    add_numbers(*l)
+
+5 - args
+Tuple
+A tuple is a collection which is ordered and unchangeable. In Python tuples are written with round brackets.
+==========
+def add_numbers(*args):
+    
+    print(args)
+
+
+def home(request):
+
+    add_numbers(1)
+
+6
+==========
+def add_numbers(x, *asd):
+    
+    print(x)
+    print(asd)
+
+
+def home(request):
+
+    add_numbers(1,2,3,4)
+
+7
+============
+def add_numbers(x, *args):
+    
+    print(x)
+    for arg in args:
+        print (arg)
+    print(sum(args))
+
+
+def home(request):
+
+    add_numbers(1,2,3,4)
+
+8 Remember * is list and ** we require a dictonary
+=============
+def add_numbers(x, **kwargs):
+    
+    print(x)
+    print(kwargs)
+
+
+def home(request):
+
+    add_numbers(1,2,3,4)
+
+9 
+=============
+def add_numbers(x, **kwargs):
+    
+    print(x)
+    print(kwargs)
+    print(kwargs['b'])
+
+
+def home(request):
+
+    i ={'a':1, 'b':2}
+    add_numbers(0,**i)
+
+10 - Same results
+kwargs is a dictionary of keyword arguments
+With **kwargs in the function definition, kwargs receives a dictionary containing all the keyword arguments beyond the formal parameter list. 
+=============
+def add_numbers(x, **kwargs):
+    
+    print(x)
+    print(kwargs)
+    print(kwargs['b'])
+
+
+def home(request):
+
+    i ={'a':1, 'b':2}
+    add_numbers(0, a=1, b=2)

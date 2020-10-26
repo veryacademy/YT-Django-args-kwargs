@@ -1,0 +1,36 @@
+    {% extends "../base/base.html" %}
+    {% block title %}
+    Welcome to Blog
+    {% endblock %}
+    {% block content %}
+    {% include "base/nav-main.html" %}
+    <div class="container">
+      <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Tutorials</h1>
+        <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap
+          example.
+          It’s built with default Bootstrap components and utilities with little customization.</p>
+      </div>
+      <div class="py-5">
+        <div class="row">
+          {% for post in posts %}
+          <div class="col-md-4">
+            <a class="text-dark" href="{{post.get_absolute_url}}">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{{post.image.url}}" alt="{{ post.title }}">
+                <div class="card-body">
+                  <h2 style="font-size:18px;font-weight:bold">{{post.title|truncatechars:50}}</h2>
+                  <p class="card-text">{{post.excerpt|truncatechars:50}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% include "base/footer.html" %}
+    {% endblock %}

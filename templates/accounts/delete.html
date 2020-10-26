@@ -1,0 +1,27 @@
+{% extends "../base/base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+
+<div class="container-fluid my-5">
+    <section class="px-md-5 mx-md-5 text-center text-lg-left dark-grey-text">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <form class="form-reset p-4 rounded update-form" action="{% url "accounts:deleteuser" %}" method="post">
+                    {% csrf_token %}
+                    <p class=" h5 mb-2 pt-4 font-weight-bold">Delete Account</p>
+                    <p>Are you sure you want to delete your account?
+                        *Important - your account data will remain available for 20 days</p>
+                    <button type="submit" role="button"
+                        class="btn btn-danger btn-block py-2 mb-4 mt-5 font-weight-bold">Delete</button>
+                </form>
+                <p class="small text-center pt-4">
+                    <a href="{% url "accounts:profile" %}">Back to Dashboard</a>
+                </p>
+                <p class="small text-center">
+                    <a href="{% url "accounts:register" %}">Help Center?</a>
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

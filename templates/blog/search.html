@@ -1,0 +1,52 @@
+{% extends "../base/base.html" %}
+{% block title %}Search Page{% endblock %}
+{% block content %}
+{% include "base/nav-main.html" %}
+<div class="container pt-5">
+    {% if q %}
+    <h1>Posts containing "{{ q }}"
+        {% if c %}
+        In category "{{ c }}"
+        {% endif %}
+    </h1>
+    <p>
+        {% with results.count as total_results %}
+        Found {{ total_results }} result{{ total_results|pluralize }}
+        {% endwith %}
+    </p>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                {% for post in results %}
+                <div class="col-md-4">
+                    <a class="text-dark" href="{{post.get_absolute_url}}">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="{{post.image.url}}" alt="{{ post.title }}">
+                            <div class="card-body">
+                                <h2 style="font-size:18px;font-weight:bold">{{post.title|truncatechars:50}}</h2>
+                                <p class="card-text">{{post.excerpt|truncatechars:50}}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% empty %}
+                <p>There are no results for your query.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <p><a href="{% url "blog:post_search" %}" class="btn btn-primary" role="button" aria-disabled="true">New
+            Search</a>
+    </p>
+    {% else %}
+    <h1>Search for posts</h1>
+    <form method="get">
+        {{ form.as_p }}
+        <input class="btn btn-primary my-1" type="submit" value="Search">
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
